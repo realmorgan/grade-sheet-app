@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Grade Sheet</title>
+
+	<!-- Bootstrap CSS Stylesheet -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+	<!-- Internal CSS -->
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+
+<div class="container" style="background-color: lightgreen;">
+	<div class="row ms-5 me-5">
+		<div class="col">
+			<h3>Subject</h3>
+		</div>
+		<div class="col">
+			<h3>Score</h3>
+		</div>
+		<div class="col">
+			<h3>Grade</h3>
+		</div>
+	</div>
+
+	<form action="" method="" class="ms-5 me-5 mt-2">
+		<div class="row mb-3">
+			<div class="col">
+				<label><b>English</b></label>
+			</div>
+			<div class="col">
+				<input type="text" value="" class="form-control" id="eng" onchange="getgrade(this.value, 'enggrd')">
+			</div>
+			<div class="col">
+				<input type="text" value="" class="form-control" id="enggrd">
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col">
+				<label><b>Maths</b></label>
+			</div>
+			<div class="col">
+				<input type="text" value="" class="form-control" id="mth" onchange="getgrade(this.value, 'mthgrd')">
+			</div>
+			<div class="col">
+				<input type="text" value="" class="form-control" id="mthgrd">
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col">
+				<label><b>Chemistry</b></label>
+			</div>
+			<div class="col">
+				<input type="text" value="" class="form-control" id="chemscore" onchange="getgrade(this.value, 'chemgrd')">
+			</div>
+			<div class="col">
+				<input type="text" value="" class="form-control" id="chemgrd">
+			</div>
+		</div>
+
+
+		<div class="row mb-3">
+			<div class="col">
+				<label><b>Biology</b></label>
+			</div>
+			<div class="col">
+				<input type="text" value="" class="form-control" id="bioscore" onchange="getgrade(this.value, 'biogrd')">
+			</div>
+			<div class="col">
+				<input type="text" value="" class="form-control" id="biogrd">
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<div class="col">
+				<label><b>French</b></label>
+			</div>
+			<div class="col">
+				<input type="text" value="" class="form-control" id="frchscore" onchange="getgrade(this.value, 'frchgrd')">
+			</div>
+			<div class="col">
+				<input type="text" value="" class="form-control" id="frchgrd">
+			</div>
+		</div>
+
+	</form>
+
+	<div class="row ms-5 mt-4" style="width: 10%;">
+	<button type="button" class="btn btn-warning mb-3" onclick="calgrade()">GET RESULT</button>
+	</div>
+
+
+	<div class="row mb-5" id="totalscore">
+			<h5>TOTAL:</h5>
+		</div>
+
+	<div class="row mb-5" id="average">
+			<h5>AVERAGE:</h5>
+		</div>
+
+	<div class="row mb-5" id="remark">
+			<h5>REMARKS:</h5>
+		</div>
+</div>
+
+
+	<script type="text/javascript" language="javascript">
+
+		function getgrade(score,gradeid) {
+
+			var english = Number(document.getElementById('eng').value);
+
+			if (score > 0 && score <= 45) {
+				document.getElementById('gradeid').value = 'F';
+
+			}else if (score > 0 && score <= 45) {
+				document.getElementById('gradeid').value = 'E';
+
+			}else if (score > 45 && score < 50) {
+				document.getElementById('gradeid').value = 'D';
+
+			}else if (score >= 50 && score <= 60) {
+				document.getElementById('gradeid').value = 'C';
+
+			}else if (score > 60 && score <= 69) {
+				document.getElementById('gradeid').value = 'B';
+
+			}else if (score > 69 && score <= 100) {
+				document.getElementById('gradeid').value = 'A';
+
+			}else{
+				document.getElementById('gradeid').value = 'Invalid';
+			}
+		}
+		
+		getgrade(score,gradeid);
+
+
+		function calgrade() {
+			var eng = Number(document.getElementById('engscore').value);
+			var mth = Number(document.getElementById('mthscore').value);
+			var chem = Number(document.getElementById('chemscore').value);
+			var bio = Number(document.getElementById('bioscore').value);
+			var frch = Number(document.getElementById('frchscore').value);
+			if(eng==''){}
+			else if(isNaN(eng) || isNaN(mth) || isNaN(chem) || isNaN(bio) || isNaN(frch)){
+				alert('One or more of the score is invalid, please correct')
+				document.getElementById('totalscore').innerHTML = 'Error'
+			}else{
+				var total = eng + mat + chem + bio + frch;
+				document.getElementById('totalscore').innerHTML = total;
+			}
+		}
+
+		calgrade();
+
+	</script>
+
+</body>
+</html>
